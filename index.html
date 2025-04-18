@@ -4,6 +4,12 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
         <link type="text/css" rel="stylesheet" href="main.css">
+        <style>
+            body {
+                margin: 0;
+                background-color: black;
+            }
+        </style>
     </head>
 
     <body>
@@ -50,7 +56,7 @@
                 pointLight2.position.set( - 500, - 500, - 500 );
                 scene.add( pointLight2 );
 
-                cone = new THREE.Mesh( new THREE.ConeGeometry( 100, 200, 32 ), new THREE.MeshPhongMaterial( { flatShading: true } ) );
+                cone = new THREE.Mesh( new THREE.ConeGeometry( 150, 300, 32 ), new THREE.MeshPhongMaterial( { flatShading: true } ) );
                 scene.add( cone );
 
                 // Plane
@@ -92,6 +98,21 @@
 
             }
 
+            //
+
+            function animate() {
+
+                const timer = Date.now() - start;
+
+                cone.position.y = Math.abs( Math.sin( timer * 0.002 ) ) * 150;
+                cone.rotation.x = timer * 0.0003;
+                cone.rotation.z = timer * 0.0002;
+
+                controls.update();
+
+                effect.render( scene, camera );
+
+            }
 
         </script>
 
