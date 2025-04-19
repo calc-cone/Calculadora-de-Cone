@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>cone</title>
+		<title>Calculadora de Cone</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-		<link type="text/css" rel="stylesheet" href="main.css">
-
+	<link type="text/css" rel="stylesheet" href="main.css">
 	</head>
 
 	<body>
+        <canvas class="webgl"></canvas>
         <script>
             // Coloca um texto antes disso dizendo pra colocar 0 caso não tiver o valor
             // Todos os numeros estao em float
@@ -29,7 +29,10 @@
                 geratriz = Math.sqrt(altura ** 2 + raio ** 2);
             }
             //^ Contas para descobrir variaveis restantes
-            //Tenta fazer com que dê erro se ambos raio e diametro forem 0 ou se ambos altura e geratriz forem 0
+            //Tenta fazer com que dê erro se:
+            //tudo for 0
+            //altura e geratriz for 0
+            //tudo for 0 exceto altura ou geratriz (acho que se fazer esse nao precisa fazer o primeiro)
             var volume = (Math.PI * raio ** 2 * altura) / 3;
             var area = Math.PI * raio * (raio + geratriz);
             //Math.PI é pi se não for obvio
@@ -49,19 +52,18 @@
 		</script>
 
         <script type="module">
-            import * as THREE from 'three';
+            import * as THREE from 'https://unpkg.com/three@0.175.0/build/three.module.js';
             import { AsciiEffect } from 'three/addons/effects/AsciiEffect.js';
             import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
 
             function cone3d() {
-                // Coloca o valor do volume e da area em um lugar visivel
                 document.getElementById("volume").innerHTML = "Volume: " + volume;
                 document.getElementById("area").innerHTML = "Área: " + area;
-                // Coloca o valor do raio, altura e geratriz em um lugar visivel
                 document.getElementById("raio").innerHTML = "Raio: " + raio;
                 document.getElementById("altura").innerHTML = "Altura: " + altura;
                 document.getElementById("geratriz").innerHTML = "Geratriz: " + geratriz;
                 document.getElementById("diametro").innerHTML = "Diâmetro: " + diametro;
+                //nao sei se funciona
 
                 let camera, controls, scene, renderer, effect;
 
