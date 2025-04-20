@@ -25,6 +25,8 @@
     <div id="info">
         <p id="volume"></p>
         <p id="area"></p>
+        <p id="areal"></p>
+        <p id="areab"></p>
         <p id="raio"></p>
         <p id="altura"></p>
         <p id="geratriz"></p>
@@ -70,7 +72,7 @@
         
         
         if (diametro !== raio * 2 ){
-            alert("Valor do Diâmetro incorreto. Por favor, recarregue a página e insira novamente, diâmetro é igual duas vezes o  raio.")
+            alert("Valor do Diâmetro incorreto. Por favor, recarregue a página e insira novamente.")
             throw new Error('Diâmetro com valor errado.');
             
         }
@@ -84,10 +86,13 @@
 
         const volume = (Math.PI * raio ** 2 * altura) / 3;
         const area = Math.PI * raio * (raio + geratriz);
+        const areal = Math.PI * raio * geratriz
+        const areab = Math.PI * (raio ** 2)
 
-        
-        document.getElementById("volume").textContent = "Volume: " + volume.toFixed(2);
-        document.getElementById("area").textContent = "Área: " + area.toFixed(2);
+        document.getElementById("volume").textContent = "Volume: " + volume.toFixed(2) + " | " + Math.round(volume / Math.PI) + 'π';
+        document.getElementById("area").textContent = "Área: " + area.toFixed(2) + " | " + Math.round(area / Math.PI) + 'π' ;
+        document.getElementById("areal").textContent = "Área Lateral: " + areal.toFixed(2) + " | " + Math.round(areal / Math.PI) + "π";
+        document.getElementById("areab").textContent = "Área da Base: " + areab.toFixed(2) + " | " + Math.round(areab / Math.PI) + "π";
         document.getElementById("raio").textContent = "Raio: " + raio.toFixed(2);
         document.getElementById("altura").textContent = "Altura: " + altura.toFixed(2);
         document.getElementById("geratriz").textContent = "Geratriz: " + geratriz.toFixed(2);
